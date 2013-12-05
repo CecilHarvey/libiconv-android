@@ -219,7 +219,7 @@ static size_t wchar_from_loop_convert (iconv_t icd,
             return -1;
           else if (errno == EINVAL) {
             /* Continue, append next wchar_t, but avoid buffer overrun. */
-            if (bufcount + MB_CUR_MAX > BUF_SIZE)
+            if (bufcount + 6/*MB_CUR_MAX*/ > BUF_SIZE)
               abort();
           } else
             abort();
